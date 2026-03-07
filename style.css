@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Corinthia:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F2E9E0;
+    font-family: monospace;
+}
+
+/* Navbar  */
+.navbar {
+    position: sticky;
+    top: 0; /* indique que la navbar reste collée en haut */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 60px;
+    background-color: #E9CEBD;
+    padding: 0 30px;
+    border-bottom: 0.5px solid #000080;
+}
+
+/* Logo */
+.logo {
+    height: 90px;
+    margin-left: 30px;
+}
+
+/* Menu nav */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    position: sticky;
+    left: 50%;
+    transform: translate(-50%);
+    font-family: "Bellota", system-ui;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.menu li a {
+    color: #000080;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+
+/* button */
+.btn-reserver {
+    background-color: #000080;
+    color: #E9CEBD;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 20px;
+    font-family: "Bellota", system-ui;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* burger  */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #000080;
+    cursor: pointer;
+}
+
+.slide{
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/*   HOME  */
+#home{
+    background-image: url("images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#home h1{
+    color: #000080;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 60px;
+    margin-top: 450px;
+    font-family: "Corinthia", cursive;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 7rem;
+    text-shadow:
+            0 0 3px rgba(255,255,255,0.9),
+            0 0 7px rgba(255,255,255,0.7),
+            0 0 15px rgba(255,255,255,0.5);
+}
+
+
+/*   SITUATION  */
+
+#situation{
+    background-color: #F2E9E0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: 60px;
+}
+
+#situation .droite {
+    grid-column: 8 / 13;
+    grid-row: 1 / 13;
+    background-image: url("images/situation.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#situation .gauche {
+    display: grid;
+    color: #000080;
+    font-family: "Bellota", system-ui;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+#situation .gauche h1 {
+    grid-column: 3 / 6;
+    grid-row: 2 / 13;
+}
+
+#situation .gauche h2 {
+    grid-column: 6 / 12;
+    grid-row: 10 / 13;
+}
+
+/* a voir  */
+#avoir{
+    background-color: #F2E9E0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+
+#avoir .gauche{
+    grid-column: 1 / 7;
+    grid-row: 1 / 13;
+    background-image: url("images/avoir.jpg");
+    background-size: cover;       /* image couvre tout l’espace */
+    background-position: center;  /* centrage de l’image */
+    background-repeat: no-repeat;
+}
+
+
+
+/* ======================== */
+@media (max-width: 768px) {
+    /* Navbar passe en flex wrap */
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 20px;
+        align-items: center;
+    }
+
+    /* burger visible à droite */
+    .hamburger {
+        display: block;
+        order: 2;
+        margin-right: 50px;
+    }
+
+    /* Bouton Réserver à droite du hamburger */
+    .btn-reserver {
+        order: 3;
+        margin-left: 10px;
+        margin-right: 0;
+        padding: 10px;
+        min-width: auto;
+        font-size: 14px;
+    }
+
+    /* Menu vertical centré sous logo */
+    .menu {
+        position: static;
+        transform: none;
+        flex-direction: column;
+        background-color: #E9CEBD;
+        width: 100%;
+        display: none;
+        gap: 10px;
+        margin-top: 10px;
+        text-align: center;
+        order: 4;
+        z-index: 10;
+    }
+
+    /* Menu affiché quand hamburger actif */
+    .menu.active {
+        display: flex;
+    }
+
+    /* vos vacances  */
+    #home h1 {
+        color: navy;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 60px;
+        margin-top: 450px;
+        font-family: "Corinthia", cursive;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 7rem;
+    }
+}

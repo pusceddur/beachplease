@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" class="css">
+    <title>Document</title>
+</head>
+<body>
+        <nav class="navbar">
+            <img src="Logo/logo_bleu.png" alt="logo" class="logo">
+            <button class="hamburger" aria-label="Toggle menu">☰</button>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#situation">Situation</a></li>
+                <li><a href="#avoir">A voir</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="btn-reserver">Réserver</button>
+        </nav>
+        <div class="slide" id="home">
+            <h1>Vos vacances commencent ici...</h1>
+        </div>
+        <div class="slide" id="situation">
+            <div class="gauche">
+                <h1>Votre escapade à deux pas de la plage</h1>
+                <h2>Réservez vos dates et planifiez votre séjour.</h2>
+            </div>
+            <div class="droite"></div>
+        </div>
+        <div class="slide" id="avoir">
+            <div class="gauche"></div>
+            <div class="droite"></div>
+        </div>
+
+
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            const menu = document.querySelector('.menu');
+
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        </script>
+</body>
+</html>
