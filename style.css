@@ -4,17 +4,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 body {
+    height: 100vh;
     background-color: #F2E9E0;
-    font-family: monospace;
+
 }
 
 /* Navbar  */
 .navbar {
     position: sticky;
-    top: 0; /* indique que la navbar reste collée en haut */
+    top: 0;
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -22,20 +24,23 @@ body {
     min-height: 60px;
     background-color: #E9CEBD;
     padding: 0 30px;
-    border-bottom: 0.5px solid #000080;
+    border-bottom: 1px solid #000080;
 }
 
 /* Logo */
 .logo {
     height: 90px;
     margin-left: 30px;
+    padding: 10px 20px;
+    box-sizing: unset;
 }
 
 /* Menu nav */
 .menu {
     list-style: none;
     display: flex;
-    gap: 30px;
+    row-gap: 20px;
+    column-gap: 120px;
     margin: 0;
     padding: 0;
     position: sticky;
@@ -62,10 +67,15 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    margin-right: 20px;
+    margin-right: 30px;
     font-family: "Bellota", system-ui;
     font-weight: 700;
     font-style: normal;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-reserver:active {
+    transform: translate(0em, 0.2em);
 }
 
 /* burger  */
@@ -90,75 +100,216 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 100px; /* spaziatura dall’alto */
 }
 
 #home h1{
     color: #000080;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 60px;
-    margin-top: 450px;
     font-family: "Corinthia", cursive;
     font-weight: 700;
     font-style: normal;
-    font-size: 7rem;
+    font-size: 6rem;
+    padding-left: 100px;
     text-shadow:
-            0 0 3px rgba(255,255,255,0.9),
-            0 0 7px rgba(255,255,255,0.7),
-            0 0 15px rgba(255,255,255,0.5);
+            0 0 5px rgba(255,255,255,1),
+            0 0 10px rgba(255,255,255,0.8),
+            0 0 20px rgba(255,255,255,0.6);
 }
 
-
-/*   SITUATION  */
-
-#situation{
-    background-color: #F2E9E0;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-    height: 60px;
+/* Contenitore flessibile per h2 e bottone */
+.h2-button {
+    display: flex;
+    align-items: center;            /* centra verticalmente h2 e bottone */
+    gap: 20px;                       /* distanza tra h2 e pulsante */
+    padding-left: 100px;             /* distanza dal bordo sinistro */
+    margin-top: 50px;
+    flex-wrap: wrap;                  /* su mobile il pulsante va sotto l’h2 */
 }
 
-#situation .droite {
-    grid-column: 8 / 13;
-    grid-row: 1 / 13;
-    background-image: url("images/situation.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-#situation .gauche {
-    display: grid;
+.h2-button h2 {
+    margin: 0;
+    font-size: 2rem;
     color: #000080;
     font-family: "Bellota", system-ui;
     font-weight: 700;
-    font-style: normal;
+}
+
+.en-savoir-plus {
+    background-color: #000080;
+    color: #E9CEBD;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Bellota", system-ui;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-top: 0;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.en-savoir-plus:active {
+    transform: translate(0em, 0.2em);
+}
+
+/*   SITUATION  */
+#situation{
+    background-color: #F2E9E0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+#situation .droite {
+    background-image: url("images/situation.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#situation .gauche {
+    color: #000080;
+    font-family: "Bellota", system-ui;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* titolo e servizi in alto, booking in basso */
+    min-height: 100vh; /* tutta l’altezza della slide */
+}
+
+#situation .gauche h1{
+    font-size: 1.8rem;
+    margin-bottom: 60px;
+}
+
+.services{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.service i{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.service p{
     font-size: 1rem;
 }
 
-#situation .gauche h1 {
-    grid-column: 3 / 6;
-    grid-row: 2 / 13;
+#situation .gauche h2{
+    font-size: 1.4rem;
+    font-weight: 300;
 }
 
-#situation .gauche h2 {
-    grid-column: 6 / 12;
-    grid-row: 10 / 13;
+#situation .gauche .booking {
+    margin-bottom: -40px;
 }
 
-/* a voir  */
+.services .service:nth-child(1){
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.services .service:nth-child(2){
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.services .service:nth-child(3){
+    grid-column: 5;
+    grid-row: 1;
+}
+
+.services .service:nth-child(4){
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.services .service:nth-child(5){
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.services .service:nth-child(6){
+    grid-column:2/6;
+    grid-row: 5;
+}
+
+.services .service:nth-child(7){
+    grid-column: 1 / 7;
+    grid-row: 6 / 7;
+}
+
+.booking {
+    display: flex;
+    align-items: center;
+    background: #D8C0AF;
+    padding: 20px 30px;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    gap: 15px;
+
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    border-right: 1px solid #E9CEBD
+}
+
+.item:last-of-type{
+    border-right: none;
+}
+
+label{
+    font-size: 0.9rem;
+    color: #000080;
+    margin-bottom: 5px;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #E9CEBD; /* lineetta sottile */
+    background: transparent;
+    font-size: 1.2rem;
+    color: #000080;
+    padding: 5px 0;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #000080; /* effetto focus colorato */
+}
+
+.btn {
+    margin-left: 25px;
+    background: #000080;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn:active {
+    transform: translate(0em, 0.2em);
+}
+    /* a voir  */
 #avoir{
     background-color: #F2E9E0;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
 }
 
 #avoir .gauche{
-    grid-column: 1 / 7;
-    grid-row: 1 / 13;
     background-image: url("images/avoir.jpg");
     background-size: cover;       /* image couvre tout l’espace */
     background-position: center;  /* centrage de l’image */
@@ -168,7 +319,41 @@ body {
 
 
 /* ======================== */
-@media (max-width: 768px) {
+@media (max-width: 1400px) {
+    .menu {
+        list-style: none;
+        display: flex;
+        row-gap: 20px;
+        column-gap: 60px;
+        margin: 0;
+        padding: 0;
+        position: sticky;
+        left: 50%;
+        transform: translate(-50%);
+        font-family: "Bellota", system-ui;
+        font-weight: 700;
+        font-style: normal;
+    }
+}
+
+@media (max-width: 1050px) {
+    .menu {
+        list-style: none;
+        display: flex;
+        row-gap: 20px;
+        column-gap: 30px;
+        margin: 0;
+        padding: 0;
+        position: sticky;
+        left: 50%;
+        transform: translate(-50%);
+        font-family: "Bellota", system-ui;
+        font-weight: 700;
+        font-style: normal;
+    }
+}
+
+@media (max-width: 865px) {
     /* Navbar passe en flex wrap */
     .navbar {
         flex-wrap: wrap;
@@ -226,5 +411,22 @@ body {
         font-weight: 700;
         font-style: normal;
         font-size: 7rem;
+    }
+
+    .h2-button {
+        flex-direction: column;      /* testo sopra, pulsante sotto */
+        align-items: center;         /* centra sia h2 che pulsante */
+        padding-left: 20px;          /* meno padding su mobile */
+        padding-right: 20px;
+        gap: 15px;                   /* spazio verticale tra h2 e pulsante */
+    }
+
+    .h2-button h2 {
+        font-size: 1.5rem;           /* testo più piccolo su mobile */
+        text-align: center;
+    }
+
+    .en-savoir-plus {
+        margin-top: 0;                /* già centrato grazie ad align-items */
     }
 }
